@@ -1,5 +1,7 @@
- import static java.lang.Math.*;
-    import java.util.Scanner;
+import static java.lang.Math.*;
+import java.util.Arrays;
+import java.util.Scanner;
+
     
     class Tridiagonals
     {
@@ -9,7 +11,9 @@
                 int n = sc.nextInt();
                 exampleMatrix(n);
                 double[][] T = exampleMatrix(n) ;
+                double[][] TT = exampleMatrix(n);
                 System.out.println("Is the matrix valid: " + isValidTridiagonal(T));
+                System.out.println(Arrays.deepToString(sum(T,TT)));
 
     }
     public static double[][] exampleMatrix(int n) {
@@ -38,11 +42,28 @@
         }
         return a; //Returns the tridiagonal matrix 
     }
+
+
     public static boolean isValidTridiagonal(double[][] a) {
         if (a == null || a.length != 3) return false; //Checks if matrix is null or doesnt have size length of 3, if so, return false tridiagonal matrix
         if (a[0] == null || a[1] == null || a[2] == null) return false; //Checks if each row contains data
         int n  = a[1].length;
         if (n < 1) return false; //Checks if the diagonal contains at least 1 element
         return a[0].length == n && a[2].length == n; //Checks if the diagonal below and above the main diagonal contains the same number of elements as the main diagonal
+    }
+
+
+     public static double[][] sum(double[][] a, double [][] b) {
+        if (!isValidTridiagonal(a) || !isValidTridiagonal(b)) return null; //Checks if tridiagonals are valid
+        int n = a[0].length; //sets n to be length of tridiagonal a
+        double[][] resultC = new double[3][n];
+        for (int i = 0; i < 3; i++) { //Iterates from 0 to 2, represents the three diagonals
+            for (int j = 0; j < n; j++) { //Iterates from 0 to n-1, represents length of diagonal
+                if(i ==0 && j == n-1) continue; //Skip the last element in the first row
+                if(i ==2 && j == 0) continue; //Skip the first element in the third row
+                resultC [i][j] = a[i][j] + b[i][j];  //Adds the values from a and b together
+               }
+        }
+        return resultC;
     }
 }
