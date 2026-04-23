@@ -12,11 +12,14 @@ import java.util.Scanner;
                 exampleMatrix(n);
                 double[][] T = exampleMatrix(n) ;
                 double[][] TT = exampleMatrix(n);
+                double[][] TTT = exampleMatrix(n);
                 System.out.println("Is the matrix valid: " + isValidTridiagonal(T));
                 System.out.println(Arrays.deepToString(sum(T,TT)));
                 double[] D = {10.0,20.0,30.0};
                 double[][] results = productWithDiagonal(D, TT);
                 System.out.println(Arrays.deepToString(results));
+                double[] V = {1,2,3,4,5};
+                System.out.println(Arrays.toString(linearSolve(TTT, V)));
 
 
     }
@@ -85,4 +88,31 @@ import java.util.Scanner;
         }
         return resultD;
     }
+
+     public static double[] linearSolve (double[][] T, double[] v) {
+        if (!isValidTridiagonal(T) || v == null || T[1].length != v.length) { //Doing checks to ensure the math can run.
+            return null; 
+        }
+        int n = v.length;
+        double[] resultE = new double[n];
+        double[] upperDiagonal = new double[n]; //Store the new upper diagonal here
+        double[] rightHandSide = new double[n]; //Store the new right hand side here(the "v")
+        upperDiagonal[0] = T[0][0]/ T[1][0]; //Divide the first row by the first element in that first row
+        rightHandSide[0] = v[0]/T[1][0]; //Divide the element in the first row in thr RHS by the first element in that first row
+        for(int i = 1; i<n; i++){ //Iterate from 1 to n
+            double m = 1.0 / (T[1][i] - T[2][i-1] * upperDiagonal[i-1]); //Calculation to normalize the current row
+            if (i < n-1){
+                upperDiagonal[i] = T[0][i] * m; //Stores the new values after calculation in the respective variables
+            }                                        
+            rightHandSide[i] = (v[i] - T[2][i-1] * rightHandSide[i-1]) * m; //Stores the new values after calculation in the respective variables
+        }
+        resultE[n-1] = rightHandSide[n-1]; //Solving the new matrix from bottom to top
+        for(int i = n-2; i >=0; i--) {
+            resultE[i] = rightHandSide[i]-upperDiagonal[i] * resultE[i+1];
+        }
+
+        return resultE ;
+
+    }
+
 }
