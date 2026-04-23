@@ -9,27 +9,15 @@ import java.util.Scanner;
                 Scanner sc = new Scanner(System.in);
                 System.out.print("Enter matrix size: ");
                 int n = sc.nextInt();
-                exampleMatrix(n);
-                double[][] T = exampleMatrix(n) ;
-                double[][] TT = exampleMatrix(n);
-                double[][] TTT = exampleMatrix(n);
-                System.out.println("Is the matrix valid: " + isValidTridiagonal(T));
-                System.out.println(Arrays.deepToString(sum(T,TT)));
-                double[] D = {10.0,20.0,30.0};
-                double[][] results = productWithDiagonal(D, TT);
-                System.out.println(Arrays.deepToString(results));
-                double[] V = {1,2,3,4,5};
-                System.out.println(Arrays.toString(linearSolve(TTT, V)));
-
-
+                
     }
     public static double[][] exampleMatrix(int n) {
         double[][] a = new double[3][n];
         for (int i = 0; i < n; i++) {
-            a[1][i] = -Math.pow(i + 1, 2); 
+            a[1][i] = -Math.pow(i + 1, 2); //Takes value in main diagonal and squares them and multiply by -1
             if (i < n - 1) {
-                a[0][i] = 1.0; 
-                a[2][i] = (i + 2); 
+                a[0][i] = 1.0; //Set values in the diagonal above to be 1
+                a[2][i] = (i + 2); //set values in the diagonals belows to go from 2 to n
             }
         }
         System.out.println("n x n Matrix:");
