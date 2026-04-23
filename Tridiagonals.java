@@ -14,6 +14,10 @@ import java.util.Scanner;
                 double[][] TT = exampleMatrix(n);
                 System.out.println("Is the matrix valid: " + isValidTridiagonal(T));
                 System.out.println(Arrays.deepToString(sum(T,TT)));
+                double[] D = {10.0,20.0,30.0};
+                double[][] results = productWithDiagonal(D, TT);
+                System.out.println(Arrays.deepToString(results));
+
 
     }
     public static double[][] exampleMatrix(int n) {
@@ -65,5 +69,20 @@ import java.util.Scanner;
                }
         }
         return resultC;
+    }
+
+
+     public static double[][] productWithDiagonal(double[] D, double[][] T) {
+        if (D == null || !isValidTridiagonal(T) || D.length != T[1].length) return null; //Checks if D is empty, T is a valid tridiagonal and if the length of D and T are equal
+        int n = T[1].length;
+        double [][] resultD = new double[3][n];
+        for (int j = 0; j<n; j++) {  //Iterates from 0 to n-1
+            resultD[0][j] = D[j] * T[0][j]; // Multiplys the Diagonal above the main by values Dj
+            resultD[1][j] = D[j] * T[1][j]; //Multiplys the main Diagonal by the values Dj
+            if (j< n-1) {
+                resultD[2][j] = D[j+1] * T[2][j]; //Multiplys the Diagonal below the main by the value Dj+1
+            }
+        }
+        return resultD;
     }
 }
