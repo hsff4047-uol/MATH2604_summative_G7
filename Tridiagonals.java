@@ -39,12 +39,12 @@ import java.util.Scanner;
     }
 
 
-    public static boolean isValidTridiagonal(double[][] a) {
-        if (a == null || a.length != 3) return false; //Checks if matrix is null or doesnt have size length of 3, if so, return false tridiagonal matrix
-        if (a[0] == null || a[1] == null || a[2] == null) return false; //Checks if each row contains data
-        int n  = a[1].length;
+    public static boolean isValidTridiagonal(double[][] b) {
+        if (b == null || b.length != 3) return false; //Checks if matrix is null or doesnt have size length of 3, if so, return false tridiagonal matrix
+        if (b[0] == null || b[1] == null || b[2] == null) return false; //Checks if each row contains data
+        int n  = b[1].length;
         if (n < 1) return false; //Checks if the diagonal contains at least 1 element
-        return a[0].length == n && a[2].length == n; //Checks if the diagonal below and above the main diagonal contains the same number of elements as the main diagonal
+        return b[0].length == n && b[2].length == n; //Checks if the diagonal below and above the main diagonal contains the same number of elements as the main diagonal
     }
 
 
