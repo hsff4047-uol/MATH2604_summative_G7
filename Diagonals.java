@@ -1,20 +1,20 @@
-/**
-     * Inverts a diagonal matrix by flipping each number (1/x).
-     * I'm assuming the matrix is invertible, so I'm not checking for zeroes.
-     * @param a The 1D array representing the diagonal matrix.
-     * @return A new array with the inverted numbers. If the input is null, it 
-     * returns null. If it's an empty array, it just gives back an empty one.
-     */
-    public static double[] inverse(double[] a) {
-        if (a == null) {
-            return null;
-        }
+public static double[] sum(double[]a, double[]b) {
+    if (a == null || b == null|| a.length != b.length) return null; //Checks if the matrices are the same length, and if they are null
+    int n = a.length;
+    double sumResult [] = new double [n]; 
+    for (int i = 0; i<n; i++) { //Iterates from 0 to n-1
+        sumResult[i] = a[i] + b[i]; //Adds the values in the main diagonal from parameters
+    }
+    return sumResult;
+}
 
+public static double[] inverse(double[] a) {
+    if (a == null) {
+         return null;
+    }
         double[] result = new double[a.length];
-
         for (int i = 0; i < a.length; i++) {
             result[i] = 1.0 / a[i];
         }
-
         return result;
     }
