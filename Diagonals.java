@@ -8,6 +8,16 @@ public static double[] sum(double[]a, double[]b) {
     return sumResult;
 }
 
+public static double[] product(double[]a, double[]b) {
+    if (a == null || b == null|| a.length != b.length) return null; //Checks if the matrices are the same length, and if they are null
+    int n = a.length;
+    double productResult[] = new double [n]; 
+    for (int i = 0; i<n; i++) { //Iterates from 0 to n-1
+        productResult[i] = a[i] * b[i]; //Multiplys the values in the main diagonal from parameters
+    }
+    return productResult;
+}
+
 public static double[] inverse(double[] a) {
     if (a == null) {
          return null;
