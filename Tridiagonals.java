@@ -48,21 +48,30 @@ import java.util.Scanner;
     }
 
 
-     public static double[][] sum(double[][] a, double [][] b) {
-        if (!isValidTridiagonal(a) || !isValidTridiagonal(b)) return null; //Checks if tridiagonals are valid
-        int n = a[0].length; //sets n to be length of tridiagonal a
-        double[][] resultC = new double[3][n];
-        for (int i = 0; i < 3; i++) { //Iterates from 0 to 2, represents the three diagonals
-            for (int j = 0; j < n; j++) { //Iterates from 0 to n-1, represents length of diagonal
-                if(i ==0 && j == n-1) continue; //Skip the last element in the first row
-                if(i ==2 && j == 0) continue; //Skip the first element in the third row
-                resultC [i][j] = a[i][j] + b[i][j];  //Adds the values from a and b together
-               }
+  public static double[][] sum(double[][] a, double[][] b) {
+        // make sures that main array exist and have 3 rows
+        if (a == null || b == null || a.length != 3 || b.length != 3) {
+            return null;
         }
-        return resultC;
+        // check if any rows are missing
+        if (a[0] == null || a[1] == null || a[2] == null ||
+            b[0] == null || b[1] == null || b[2] == null) {
+            return null;
+        }
+        int n = a[1].length;
+        // Check if n is at least 1 and if all rows have same length
+        if (n < 1 || a[0].length != n || a[2].length != n ||
+            b[0].length != n || b[1].length != n || b[2].length != n) {
+          return null;
+        }
+        double[][] result = new double[3][n];
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < n; j++) {
+                result[i][j] = a[i][j] + b[i][j];
+            }
+        }
+        return result;
     }
-
-
      public static double[][] productWithDiagonal(double[] D, double[][] T) {
         if (D == null || !isValidTridiagonal(T) || D.length != T[1].length) return null; //Checks if D is empty, T is a valid tridiagonal and if the length of D and T are equal
         int n = T[1].length;
