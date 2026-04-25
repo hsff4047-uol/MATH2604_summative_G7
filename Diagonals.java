@@ -1,3 +1,7 @@
+import static java.lang.Math.*;
+
+class Diagonals
+{
 public static double[] sum(double[]a, double[]b) {
     if (a == null || b == null|| a.length != b.length) return null; //Checks if the matrices are the same length, and if they are null
     int n = a.length;
@@ -28,3 +32,8 @@ public static double[] inverse(double[] a) {
         }
         return result;
     }
+
+
+}
+
+
