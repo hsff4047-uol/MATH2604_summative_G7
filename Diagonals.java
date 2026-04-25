@@ -2,6 +2,10 @@ import static java.lang.Math.*;
 
 class Diagonals
 {
+public static double[] exampleMatrix() {
+    return new double[] {10, 8, 5, -10, 7};
+}
+
 public static double[] sum(double[]a, double[]b) {
     if (a == null || b == null|| a.length != b.length) return null; //Checks if the matrices are the same length, and if they are null
     int n = a.length;
