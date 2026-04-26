@@ -39,6 +39,21 @@ class Tridiagonals {
         }
         return a; // Returns the tridiagonal matrix
     }
+    public static boolean isValidTridiagonal(double[][] b) {
+        if (b == null) return false;
+        if (b.length != 3) return false;
+
+        for (int i = 0; i < 3; i++) {
+            if (b[i] == null) return false;
+        }
+
+        int n = b[1].length;
+        if (n < 1) return false;
+        if (b[0].length !=n || b[2].length !=n) return false;
+
+        return true;
+        
+    }
 
     public static double[][] sum(double[][] a, double[][] b) {
         // make sures that main array exist and have 3 rows
