@@ -95,4 +95,27 @@ class Tridiagonals {
         }
         return resultD;
     }
+    public static double[] linearSolve(double[][] T, double[] v){
+        if (isValidTridiagonal(T) == false) return null; 
+        if (v == null) return null;
+        if (v.length != T[1].length) return null; 
+        
+        int n = v.length;
+        double[] mainDiag = Arrays.copyOf(T[1], n);
+        double[] upperDiag = Arrays.copyOf(T[0], n);
+        double[] rhs = Arrays.copyOf(v, n);
+
+        for (int i = 1; i < n; i++) {
+            double factor = T[2][i-1] / mainDiag[i-1];
+            mainDiag[i] = mainDiag[i] - factor * upperDiag[i-1];
+            rhs[i] = rhs[i] - factor * rhs[i-1];
+        }
+        double[] x = new double[n];
+        x[n-1] = rhs[n-1] / mainDiag[n-1];
+      
+        for (int i = n-2; i >= 0; i--) {
+            x[i] = (rhs[i] - upperDiag[i] * x[i+1]) / mainDiag[i];
+        }
+        return x;
+    }
 }
