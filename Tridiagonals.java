@@ -1,14 +1,8 @@
 import static java.lang.Math.*;
 import java.util.Arrays;
-import java.util.Scanner;
 
+/** */
 class Tridiagonals {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter matrix size: ");
-        int n = sc.nextInt();
-
-    }
 
     public static double[][] exampleMatrix(int n) {
         double[][] a = new double[3][n];
@@ -39,14 +33,20 @@ class Tridiagonals {
         }
         return a; // Returns the tridiagonal matrix
     }
+    /**This checks if an array is represnts a valid tridiagonal matrix. The main checks 
+     * are if the array is null, and if it has 3 rows that are not null.
+     * @param b the array to check
+     * @return true if the array is a valid tridiagonal matrix, false otherwise
+     */
     public static boolean isValidTridiagonal(double[][] b) {
+
         if (b == null) return false;
         if (b.length != 3) return false;
 
         for (int i = 0; i < 3; i++) {
             if (b[i] == null) return false;
         }
-
+       
         int n = b[1].length;
         if (n < 1) return false;
         if (b[0].length !=n || b[2].length !=n) return false;
@@ -95,27 +95,38 @@ class Tridiagonals {
         }
         return resultD;
     }
+    /**Computes the solution to the linear equation Tx = v, given tridiagonal nxn matrix T and 
+     * a vector v. It uses the Thomas algorithm to solve the system of linear equations.
+     * Assumes T is invertible.
+     * @param T the valid tridiagonal matrix, after checks.
+     * @param v the vector.
+     * @return the solution vector x at length n, or null if the input is invalid.
+     */
     public static double[] linearSolve(double[][] T, double[] v){
+        //Checks the input matrix and vector are valid
         if (isValidTridiagonal(T) == false) return null; 
         if (v == null) return null;
         if (v.length != T[1].length) return null; 
         
+        //Copies the matrix and vector to new arrays
         int n = v.length;
         double[] mainDiag = Arrays.copyOf(T[1], n);
         double[] upperDiag = Arrays.copyOf(T[0], n);
         double[] rhs = Arrays.copyOf(v, n);
 
+        //Performs the forward elimination
         for (int i = 1; i < n; i++) {
             double factor = T[2][i-1] / mainDiag[i-1];
             mainDiag[i] = mainDiag[i] - factor * upperDiag[i-1];
             rhs[i] = rhs[i] - factor * rhs[i-1];
         }
+        //Performs the backward substitution
         double[] x = new double[n];
         x[n-1] = rhs[n-1] / mainDiag[n-1];
       
         for (int i = n-2; i >= 0; i--) {
             x[i] = (rhs[i] - upperDiag[i] * x[i+1]) / mainDiag[i];
         }
-        return x;
+        return x; 
     }
 }

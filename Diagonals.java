@@ -2,6 +2,9 @@ import static java.lang.Math.*;
 
 class Diagonals
 {
+/**This returns a representation of a diagonal 5x5 matrix. 
+ *@return the array below containing the diagonal values*/
+
 public static double[] exampleMatrix() {
     return new double[] {10, 8, 5, -10, 7};
 }
