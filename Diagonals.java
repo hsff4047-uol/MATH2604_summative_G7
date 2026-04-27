@@ -1,10 +1,13 @@
 import static java.lang.Math.*;
 
+/**Diagonals class that contains methods to create an example matrix,
+ * take the sum and product of 2 diagonal matricies,
+ * and compute the inverse of a diagonal matrix.
+ * */
 class Diagonals
 {
 /**This returns a representation of a diagonal 5x5 matrix. 
  *@return the array below containing the diagonal values*/
-
 public static double[] exampleMatrix() {
     return new double[] {10, 8, 5, -10, 7};
 }

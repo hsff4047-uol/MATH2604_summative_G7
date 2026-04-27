@@ -1,7 +1,10 @@
 import static java.lang.Math.*;
 import java.util.Arrays;
 
-/** */
+/**Tridiagonals class that contains methods to create an example matrix,
+ * check a tridiagonal matrix is valid, take the sum and product of 2 tridiagonal matrices,
+ * and solve a linear system of equations such that Tx = v.
+ * */
 class Tridiagonals {
 
     public static double[][] exampleMatrix(int n) {
@@ -33,7 +36,7 @@ class Tridiagonals {
         }
         return a; // Returns the tridiagonal matrix
     }
-    /**This checks if an array is represnts a valid tridiagonal matrix. The main checks 
+    /**This checks if an array is represents a valid tridiagonal matrix. The main checks 
      * are if the array is null, and if it has 3 rows that are not null.
      * @param b the array to check
      * @return true if the array is a valid tridiagonal matrix, false otherwise

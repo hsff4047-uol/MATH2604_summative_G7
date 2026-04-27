@@ -1,5 +1,7 @@
 import static java.lang.Math.*;
 
+/**ODE class that contains a method to solve a differential equation using a tridiagonal solver.
+ **/
 class ODE {
 
     /**
