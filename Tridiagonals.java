@@ -6,7 +6,10 @@ import java.util.Arrays;
  * and solve a linear system of equations such that Tx = v.
  * */
 class Tridiagonals {
-
+    /**Creates a example triadiagonal matrix the size of nxn and stores in a compressed 3xn format
+    * @param n, the size of the matrix to be shown
+    * @returns a 2D array of size 3xn
+    */
     public static double[][] exampleMatrix(int n) {
         double[][] a = new double[3][n];
         for (int i = 0; i < n; i++) {
@@ -84,6 +87,11 @@ class Tridiagonals {
     }
 
     public static double[][] productWithDiagonal(double[] D, double[][] T) {
+        /**Compute the product between a tridiagonal matrix and a diagonal matrix
+        * @param D a valid diagonal matrix, after comparing it to size of the tridiagonal
+        * @param t a valid tridigonal matrix, after checking it is valid
+        * @return the result after computing the product, or null if it is invalid
+        */
         if (D == null || !isValidTridiagonal(T) || D.length != T[1].length)
             return null; // Checks if D is empty, T is a valid tridiagonal and if the length of D and T
                          // are equal
