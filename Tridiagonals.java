@@ -2,8 +2,8 @@ import static java.lang.Math.*;
 import java.util.Arrays;
 
 /**Tridiagonals class that contains methods to create an example matrix,
- * check a tridiagonal matrix is valid, take the sum and product of 2 tridiagonal matrices,
- * and solve a linear system of equations such that Tx = v.
+ * check a tridiagonal matrix is valid, take the sum of 2 tridiagonal matrices and product of a tridiagonal 
+ * matrix and a diagonal matrix,and solve a linear system of equations such that Tx = v.
  * */
 class Tridiagonals {
     /**Creates a example triadiagonal matrix the size of nxn and stores in a compressed 3xn format
