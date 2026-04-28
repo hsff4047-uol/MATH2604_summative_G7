@@ -40,13 +40,13 @@ public static double[] product(double[]a, double[]b) {
     }
     return productResult;
 }
-
+/*
+    @param 1d array of diagonal matrix
+    @return new array that is inverted
+  */  
 public static double[] inverse(double[] a) {
-    if (a == null) {
-         return null;
-    }
-        double[] result = new double[a.length];
-        for (int i = 0; i < a.length; i++) {
+        double[] result = new double[a.length];//create a new array
+        for (int i = 0; i < a.length; i++) {//loop
             result[i] = 1.0 / a[i];
         }
         return result;
