@@ -8,7 +8,7 @@ import java.util.Arrays;
 class Tridiagonals {
     /**Creates a example triadiagonal matrix the size of nxn and stores in a compressed 3xn format
     * @param n, the size of the matrix to be shown
-    * @returns a 2D array of size 3xn
+    * @return a 2D array of size 3xn
     */
     public static double[][] exampleMatrix(int n) {
         double[][] a = new double[3][n];
@@ -60,7 +60,7 @@ class Tridiagonals {
         return true;
         
     }
-/* add two tridiagonal matrices together
+/** add two tridiagonal matrices together
     @param a the first matrix
     @param b the second matrix
     @return 2d array
