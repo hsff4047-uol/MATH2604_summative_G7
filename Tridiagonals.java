@@ -60,29 +60,23 @@ class Tridiagonals {
         return true;
         
     }
-
+/* add two tridiagonal matrices together
+    @param a the first matrix
+    @param b the second matrix
+    @return 2d array
+    */
     public static double[][] sum(double[][] a, double[][] b) {
-        // make sures that main array exist and have 3 rows
-        if (a == null || b == null || a.length != 3 || b.length != 3) {
-            return null;
-        }
-        // check if any rows are missing
-        if (a[0] == null || a[1] == null || a[2] == null ||
-                b[0] == null || b[1] == null || b[2] == null) {
-            return null;
-        }
-        int n = a[1].length;
-        // Check if n is at least 1 and if all rows have same length
-        if (n < 1 || a[0].length != n || a[2].length != n ||
-                b[0].length != n || b[1].length != n || b[2].length != n) {
-            return null;
-        }
+        int n = a[0].length;
+        
         double[][] result = new double[3][n];
+    
+        // add matrices     
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < n; j++) {
                 result[i][j] = a[i][j] + b[i][j];
             }
         }
+        
         return result;
     }
     
