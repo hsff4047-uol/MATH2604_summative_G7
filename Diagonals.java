@@ -40,7 +40,7 @@ public static double[] product(double[]a, double[]b) {
     }
     return productResult;
 }
-/*
+/**
     @param 1d array of diagonal matrix
     @return new array that is inverted
   */  

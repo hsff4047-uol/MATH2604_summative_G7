@@ -86,11 +86,6 @@ class Tridiagonals {
         * @return the result after computing the product, or null if it is invalid
         */
     public static double[][] productWithDiagonal(double[] D, double[][] T) {
-        /**Compute the product between a tridiagonal matrix and a diagonal matrix
-        * @param D a valid diagonal matrix, after comparing it to size of the tridiagonal
-        * @param t a valid tridigonal matrix, after checking it is valid
-        * @return the result after computing the product, or null if it is invalid
-        */
         if (D == null || !isValidTridiagonal(T) || D.length != T[1].length)
             return null; // Checks if D is empty, T is a valid tridiagonal and if the length of D and T
                          // are equal
