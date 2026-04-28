@@ -11,7 +11,11 @@ class Diagonals
 public static double[] exampleMatrix() {
     return new double[] {10, 8, 5, -10, 7};
 }
-
+/**Computes the sum between two diagonal matrices
+* @param a, a valid diagonal matrix that isnt null
+* @param b, a valid diagonal matrix that isnt null
+* @return the result of the calculation 
+*/
 public static double[] sum(double[]a, double[]b) {
     if (a == null || b == null|| a.length != b.length) return null; //Checks if the matrices are the same length, and if they are null
     int n = a.length;
@@ -22,6 +26,11 @@ public static double[] sum(double[]a, double[]b) {
     return sumResult;
 }
 
+/**Computes the product between two diagonal matrices
+* @param a, a valid diagonal matrix that isnt null
+* @param b, a valid diagonal matrix that isnt null
+* @return the result of the calculation 
+*/
 public static double[] product(double[]a, double[]b) {
     if (a == null || b == null|| a.length != b.length) return null; //Checks if the matrices are the same length, and if they are null
     int n = a.length;
